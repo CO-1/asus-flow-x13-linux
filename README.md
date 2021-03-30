@@ -1,5 +1,22 @@
 # Linux on Asus Flow x13 
 
+With small tweaks almost everything (surprisingly touch, pen input and camera) works fine .
+Notable exceptions are resume from sleep and fingerprint.
+
+While writing on this, power draw from battery (with terminal, vscode and chromium open) is between 6 and 10W.
+CPU temperature is ~50C and fans are off.
+
+To quickly install the fixes presented here one could
+```sh
+sudo sh install.sh
+```
+
+And to uninstall them
+```sh
+sudo sh uninstall.sh
+```
+
+
 ## Keyboard
 Out of the box keyboard works but Fn-Key and backlight do not.
 
