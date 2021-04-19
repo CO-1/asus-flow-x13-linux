@@ -1,4 +1,4 @@
-obj-m += hid-asus.o
+obj-m += drivers/hid/hid-asus.o
 
 ifeq ($(origin KERNELRELEASE), undefined)
   KERNELRELEASE := $(shell uname -r)

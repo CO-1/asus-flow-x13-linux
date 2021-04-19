@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #install patched keyboard module
-sudo dkms install drivers/hid
+sudo dkms install .
 
 #blacklist nouveau
 echo "blacklist nouveau" >  /etc/modprobe.d/asus-flow-x13-nouveau.conf
