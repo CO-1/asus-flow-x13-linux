@@ -23,7 +23,11 @@ Out of the box keyboard works but Fn-Key and backlight do not.
 Since 5.11 linux kernel support for Asus N-Key Keyboards but is missing usb device id.
 To install the patched hid-asus for Flow x13 run
 ```sh
-sudo dkms install drivers/hid
+#remove previous versions
+sudo dkms remove hid-asus-flow-x13/1.0 --all
+sudo dkms remove asus-flow-x13/1.0 --all
+#install current version
+sudo dkms install .
 ```
 
 ## GPU
