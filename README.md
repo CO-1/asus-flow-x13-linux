@@ -1,7 +1,7 @@
 # Linux on Asus Flow x13 
 
 With small tweaks almost everything (surprisingly touch, pen input and camera) works fine .
-Notable exceptions are resume from sleep and fingerprint.
+Notable exceptions is fingerprint.
 
 While writing on this, power draw from battery (with terminal, vscode and chromium open) is between 6 and 10W.
 CPU temperature is ~50C and fans are off.
@@ -18,22 +18,12 @@ sudo sh uninstall.sh
 
 
 ## Keyboard
-Out of the box keyboard works but Fn-Key and backlight do not.
-
-Since 5.11 linux kernel support for Asus N-Key Keyboards but is missing usb device id.
-To install the patched hid-asus for Flow x13 run
-```sh
-#remove previous versions
-sudo dkms remove hid-asus-flow-x13/1.0 --all
-sudo dkms remove asus-flow-x13/1.0 --all
-#install current version
-sudo dkms install .
-```
+Out of the box keyboard now works.
 
 ## GPU
 
 ### AMD iGPU
-Integrated gpu requires linux firmware after 11.02.2021 (having "Green Sardine").
+Works.
 
 ### Nvidia
 Nouveau drivers hangs laptop at boot. It can be blacklisted by appending
@@ -47,7 +37,6 @@ Even if nouveau or nvidia is not loaded nvidia gpu will still consume ~10W of po
 We need to set power/control to auto to reduce power.
 
 ```sh
-echo auto > /sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/power/control
 echo '#nvidia dGPU' > /etc/udev/rules.d/99-asus-flow-power.rules
 echo 'ACTION=="add", SUBSYSTEM=="pci", TEST=="power/control", ATTR{vendor}=="0x10de", ATTR{power/control}="auto"' >> /etc/udev/rules.d/99-asus-flow-power.rules
 udevadm control --reload
