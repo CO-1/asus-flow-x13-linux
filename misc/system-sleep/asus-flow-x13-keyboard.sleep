@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# copy this file to /usr/lib/systemd/system-sleep/
+
+# values from asusctl rog-aura/src/usb.rs
+#   note: using set or set+apply may make computer not resume from sleep
+#         using awake_off on sleep, awake_on on resume seams to work fines
+LED_AWAKE_ON_SLEEP_OFF='\x5d\xbd\x01\xcf\x17\x0b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+LED_AWAKE_OFF_SLEEP_OFF='\x5d\xbd\x01\xc3\x13\x09\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+
+HID=
+for hr in /dev/hidraw*; do
+  n_key=$(/usr/bin/udevadm info -a "$hr" | grep ATTRS{product} | grep 'N-KEY' )
+  if [ -n "$n_key" ]; then
+    HID="$hr"
+    break
+  fi
+done
+
+if [ -z "$HID" ]; then
+  exit 1
+fi
+
+case $1 in
+  pre)
+    # sleep
+    printf "%b" "${LED_AWAKE_OFF_SLEEP_OFF}" > "$HID" || exit 2
+    ;;
+  post)
+    # wake
+    printf "%b" "${LED_AWAKE_ON_SLEEP_OFF}" > "$HID" || exit 2
+    ;;
+esac
