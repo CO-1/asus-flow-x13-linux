@@ -17,6 +17,8 @@ sudo sh uninstall.sh
 ```
 
 
+## Sound
+Since kernel 5.14 sound output from the speakers work.
 ## Keyboard
 Out of the box keyboard now works.
 
