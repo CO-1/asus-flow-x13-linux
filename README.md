@@ -16,6 +16,9 @@ And to uninstall them
 sudo sh uninstall.sh
 ```
 
+## Tablet
+Since kernel 5.14 accelerometer works and detects orientation but
+SW_TABLET_MODE does not. Seams like tablet mode switch is required for Gnome to automatically rotate display and enable virtual keyboard.
 
 ## Sound
 Since kernel 5.14 sound output from the speakers work.
