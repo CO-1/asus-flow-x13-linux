@@ -23,7 +23,12 @@ SW_TABLET_MODE does not. Seams like tablet mode switch is required for Gnome to 
 ## Sound
 Since kernel 5.14 sound output from the speakers work.
 ## Keyboard
-Out of the box keyboard now works.
+Out of the box keyboard works. However, keyboard backlight may start blinking during sleep or not work after resume from sleep.
+
+To fix keyboard backlight sleep issues install `misc/system-sleep/asus-flow-x13-keyboard.sleep` sleep script
+```sh
+sudo cp misc/system-sleep/asus-flow-x13-keyboard.sleep /usr/lib/systemd/system-sleep/
+```
 
 ## GPU
 

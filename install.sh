@@ -1,5 +1,7 @@
 #!/bin/sh
 
+SDIR=$(dirname $(readlink -f "$0"))
+
 #blacklist nouveau
 echo "blacklist nouveau" >  /etc/modprobe.d/asus-flow-x13-nouveau.conf
 echo "alias nouveau off" >> /etc/modprobe.d/asus-flow-x13-nouveau.conf
@@ -14,7 +16,4 @@ echo 'ACTION=="add", SUBSYSTEM=="pci", DRIVER=="nvme", TEST=="power/control", AT
 
 udevadm control --reload
 
-#install patched keyboard module
-sudo dkms install .
-
-echo "Please reboot"
+cp ${SDIR}/misc/system-sleep/asus-flow-x13-keyboard.sleep /usr/lib/systemd/system-sleep/
