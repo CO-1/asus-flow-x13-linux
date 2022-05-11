@@ -1,3 +1,6 @@
+# WARNING
+**This repository is not maintained**
+
 # Linux on Asus Flow x13 
 
 With small tweaks almost everything (surprisingly touch, pen input and camera) works fine .
