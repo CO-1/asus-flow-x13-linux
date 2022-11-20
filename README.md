@@ -23,6 +23,9 @@ sudo sh uninstall.sh
 Since kernel 5.14 accelerometer works and detects orientation but
 SW_TABLET_MODE does not. Seams like tablet mode switch is required for Gnome to automatically rotate display and enable virtual keyboard.
 
+For a linux kernel patch to fix this issue see: [https://github.com/IvanDovgal/asus-rog-flow-x13-tablet-mode](https://github.com/IvanDovgal/asus-rog-flow-x13-tablet-mode)
+Installation instructions can be found [here](https://github.com/Quoteme/asus-rog-flow-x13-tablet-mode/tree/patch-1)
+
 ## Sound
 Since kernel 5.14 sound output from the speakers work.
 ## Keyboard
